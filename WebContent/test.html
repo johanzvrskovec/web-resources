@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Test page for web-resoueces</title>
+<script src="src.js/dateOfBirthToAge.js"></script>
+</head>
+<body>
+	<script>
+		//var dob_entry = jQuery("#"+this.questionId+" .InputText").val();
+		//test
+		dob_entry = "11/09/2002"
+		var split_dob = dob_entry.split("/");	
+	
+		dob= new Date(split_dob[2]+"-"+split_dob[1]+"-"+split_dob[0]);
+		today = new Date();
+		age_years = today.getFullYear() - dob.getFullYear();
+
+      	// If your birthday hasn't occurred yet this year, subtract 1.
+      	birthday=dob
+      	birthday.setYear(today.getFullYear());
+      	if(today < birthday)
+      	{
+    	  age_years-- ;
+      	}
+      	
+      	alert(age_years); //shows you the compted age in years
+      	
+      	//set the qualtrics values
+      	//Qualtrics.SurveyEngine.setEmbeddedData('birth_year', dob.getFullYear());
+      	//Qualtrics.SurveyEngine.setEmbeddedData('ageValue', age_years);
+      	
+		
+		/*
+		var dob_entry = jQuery("#"+this.questionId+" .InputText").val();
+		var split_dob = dob_entry.split("/");
+		var birth_year = parseInt(split_dob[2]);
+		Qualtrics.SurveyEngine.setEmbeddedData('birth_year', birth_year);
+
+
+
+
+		var dob_entry = getTextValue();
+		var split_dob = dob_entry.split("/");
+		var month = split_dob[1];
+		var day = split_dob[0];
+		var year = split_dob[2];
+		var ageValue = 0;
+		var condition1 = parseInt(month+day);
+
+		var today_date = new Date();
+		var today_year = (today_date.getFullYear()).toString();
+		var today_day = (today_date.getDate()).toString();
+		var today_month= (today_date.getMonth()+1).toString();
+		var condition2 = parseInt(today_month+today_day);
+
+		if(condition2>=condition1)
+		{
+		ageValue = parseInt(today_year-parseInt(year));
+		}
+		else
+		{
+		ageValue = parseInt(today_year-parseInt(year)-1);
+		};
+		Qualtrics.SurveyEngine.setEmbeddedData('ageValue', ageValue)
+		*/
+	</script>
+</body>
+</html>
